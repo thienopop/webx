@@ -15,12 +15,14 @@ class Controller
     }
     public function view($viewName, $data = [])
     {
-        $path = 'app/views/' . $viewName . '.php';
-        if (file_exists($path)) {
-            require_once $path;
-        } else {
-            die("View does not exist: " . $viewName);
-        }
+       
+$path = 'app/views/' . $viewName . '.php';
+    if (file_exists($path)) {
+        extract($data); // giải nén mảng $data thành biến
+        require_once $path;
+    } else {
+        die("View does not exist: " . $viewName);
+    }
     }
 
 }

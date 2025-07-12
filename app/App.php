@@ -1,43 +1,51 @@
 <?php
 class App {
-    private $__controller = 'Home';
-    private $__action = 'index';
-    private $__params = [];
+    private $__controller;
+    private $__action;
+    private $__params;
 
     public function __construct() {
-        $this->loadDefaultRoute();
-        $this->handleUrl();
-    }
-
-    // Lấy giá trị controller/action mặc định từ biến global $routes
-    private function loadDefaultRoute() {
         global $routes;
-        if (!empty($routes['default'])) {
+                if(!empty($routes['default'])) {
             $this->__controller = $routes['default']['controller'] ?? 'Home';
             $this->__action = $routes['default']['action'] ?? 'index';
+        } else {
+            $this->__controller = 'Home';
+            $this->__action = 'index';
         }
+        $this->handleUrl();
+
     }
 
-    // Lấy URL người dùng truy cập (VD: /home/show/1)
     private function getUrl() {
-        return $_SERVER['PATH_INFO'] ?? '/';
+        return isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/';
     }
 
-    // Phân tích URL, load controller, action và params
     private function handleUrl() {
         $url = $this->getUrl();
-        $urlArr = array_values(array_filter(explode('/', $url)));
-
+        $urlArr = array_filter(explode('/', $url));
+        $urlArr = array_values($urlArr); // reset key về 0,1,2,...
         // Xử lý controller
         if (!empty($urlArr[0])) {
             $this->__controller = ucfirst($urlArr[0]);
             unset($urlArr[0]);
         }
 
-        // Load controller file
-        if (!$this->loadController()) return;
+        $controllerPath = 'app/controllers/' . $this->__controller . '.php';
+        if (file_exists($controllerPath)) {
+            require_once $controllerPath;
+            if (class_exists($this->__controller)) {
+                $this->__controller = new $this->__controller();
+            } else {
+                $this->loadError("Không tìm thấy class controller.");
+                return;
+            }
+        } else {
+            $this->loadError("Không tìm thấy file controller.");
+            return;
+        }
 
-        // Xử lý action
+        // Xử lý action (method)
         if (!empty($urlArr[1])) {
             $this->__action = $urlArr[1];
             unset($urlArr[1]);
@@ -46,48 +54,20 @@ class App {
         // Xử lý params
         $this->__params = array_values($urlArr);
 
-        // Gọi action
-        $this->callAction();
-    }
-
-    // Load file controller và khởi tạo đối tượng
-    private function loadController(): bool {
-        $controllerFile = 'app/controllers/' . $this->__controller . '.php';
-
-        if (!file_exists($controllerFile)) {
-            return $this->loadError("Không tìm thấy file controller: $controllerFile");
-        }
-
-        require_once $controllerFile;
-
-        if (!class_exists($this->__controller)) {
-            return $this->loadError("Không tìm thấy class controller: {$this->__controller}");
-        }
-
-        $this->__controller = new $this->__controller();
-        return true;
-    }
-
-    // Gọi method (action) trong controller nếu tồn tại
-    private function callAction() {
+        // Gọi method (action)
         if (method_exists($this->__controller, $this->__action)) {
             call_user_func_array([$this->__controller, $this->__action], $this->__params);
         } else {
-            $this->loadError("Không tìm thấy action: {$this->__action}");
+            $this->loadError("Không tìm thấy method/action.");
         }
     }
 
-    // Load trang lỗi
-    private function loadError($message = "Lỗi hệ thống"): bool {
+    private function loadError($message = "Lỗi hệ thống") {
         echo "<h2 style='color: red;'>$message</h2>";
-
-        $errorPage = 'app/errors/404.php';
-        if (file_exists($errorPage)) {
-            require_once $errorPage;
+        if (file_exists('app/errors/404.php')) {
+            require_once 'app/errors/404.php';
         } else {
-            echo "<p style='color: gray;'>Không tìm thấy file lỗi: 404.php</p>";
+            echo "<p>Không tìm thấy trang lỗi (404.php).</p>";
         }
-
-        return false;
     }
 }

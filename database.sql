@@ -1,5 +1,5 @@
-CREATE USER 'webx'@'localhost' IDENTIFIED BY 'weby';
-GRANT ALL PRIVILEGES ON mydb.* TO 'webx'@'localhost';
+CREATE USER 'thien'@'localhost' IDENTIFIED BY 'weby';
+GRANT ALL PRIVILEGES ON webx.* TO 'thien'@'localhost';
 
 create table users (
     id serial primary key,
@@ -37,6 +37,7 @@ create table products (
     image_url varchar(255),
     created_at timestamp default current_timestamp
 );
+
 
 create table categories (
     id serial primary key,

@@ -1,6 +1,13 @@
 <?php
 // echo "ihu";
 session_start();
+
+$_SESSION['user'] = [
+    'id' => 1,
+    'name' => 'Nguyễn Văn A',
+    'email' => 'a@gmail.com'
+];
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);

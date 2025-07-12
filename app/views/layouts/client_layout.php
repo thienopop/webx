@@ -1,30 +1,29 @@
-<?php
-echo '
+
+
+     
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <link rel="stylesheet" href="/web/public/css/style.css">
-
-    <title>' . $data['title'] . '</title>
+    <title><?= $data['title'] ?></title>
+    <link rel="stylesheet" href="<?= _WEB_ROOT ?>/public/css/style.css">
 </head>
 <body>
-';
+    <?php $this->View('blocks/header'); ?>
+    <div class="container">
+        <?php
+            if (isset($data['view_data'])) {
+                $this->View($data['content'], $data['view_data']);
+            } else {
+                $this->View($data['content']);
+            }
+        ?>
+    </div>
+    <?php $this->View('blocks/footer'); ?>
+    <!-- Đặt ở cuối body -->
+<script src="?= _WEB_ROOT ?>/public/js/script.js"></script>
 
-$this->View('blocks/header');
-echo "<div>";
-// $this->View($data['content'], $data['list']);
-
-if (isset($data['list'])) {
-    $this->View($data['content'], $data['list']);
-} else {
-    $this->View($data['content']);
-}
-echo '</div>';
-$this->View('blocks/footer');
-
-echo '
 </body>
-</html>';
-?>
+</html>

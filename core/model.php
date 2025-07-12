@@ -1,26 +1,23 @@
 <?php
 class Model {
-    // protected $conn;
+    protected $conn;
 
-    // public function __construct() {
-    //     $this->conn = $this->connect();
-    // }
+    public function __construct() {
+        $this->conn = $this->connect();
+    }
 
-    // private function connect() {
-    //     // Thông tin kết nối DB
-    //     $host = 'localhost';
-    //     $user = 'root';
-    //     $pass = '';
-    //     $db   = 'mydb';
+    private function connect() {
+        $host = "localhost";       // máy chủ MySQL
+        $username = "thien";        // user MySQL
+        $password = "weby";        // mật khẩu
+        $database = "webx";        // tên database
 
-    //     $conn = new mysqli($host, $user, $pass, $db);
+        $conn = new mysqli($host, $username, $password, $database); // ✅ Sửa đúng biến
 
-    //     if ($conn->connect_error) {
-    //         die("Kết nối thất bại: " . $conn->connect_error);
-    //     }
+        if ($conn->connect_error) {
+            die("Kết nối thất bại: " . $conn->connect_error);
+        }
 
-    //     return $conn;
-    // }
-
-    // Hàm dùng chung có thể thêm ở đây: insert, update, find, delete...
+        return $conn;
+    }
 }

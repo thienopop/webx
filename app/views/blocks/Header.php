@@ -5,8 +5,13 @@
 <body>
     <header>
         <ul class="header1">
+            <!-- <li> -->
+                 <a href="<?= _WEB_ROOT ?>/home/index"><li>SiuG</li></a>
+                <!-- <img src="/web/public/image/header/logo.png" alt="logo"> -->
+            <!-- </li> -->
             <li class="top_dow1">
-                SiuG
+                Giới thiệu 
+                                 <!-- <a href="<?= _WEB_ROOT ?>/home/index"><li>SiuX</li></a> -->
                 <ul class="top_dow2">
                     <li>
                         danh mục san pham
@@ -25,10 +30,10 @@
             <li class="top_dow3">
                 Sản phẩm
                 <ul class="top_dow4">
-                    <li >
+                    <!-- <li > -->
                         <!-- <a href="/product/index">Sản phẩm</a> -->
-                        <a href="<?= _WEB_ROOT ?>/product/index">Sản phẩm</a>
-                    </li>
+                        <a href="<?= _WEB_ROOT ?>/product/index"><li>Sản phẩm</li></a>
+                    <!-- </li> -->
                     <li>
                         tôm
                     </li>
@@ -40,10 +45,10 @@
         </ul>
         <ul class="header2">
             <li>
-                <input type="text">
+                <input type="text" placeholder="Tìm kiếm sản phẩm">
             </li>
             <li>
-                 <img src="/web/public/image/header/thongbao.jpg" alt="thông báo">
+                 <img src="/web/public/image/header/timkiem.jpg" alt="Tìm kiếm sản phẩm">
             </li>
         </ul>
         <ul class="header3">
