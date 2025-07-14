@@ -24,9 +24,7 @@
                     </li>
                 </ul>
             </li>
-            <li>
-               Giới thiệu
-            </li>
+    
             <li class="top_dow3">
                 Sản phẩm
                 <ul class="top_dow4">
@@ -37,8 +35,7 @@
                     <li>
                         tôm
                     </li>
-                    <li>
-                        tôm
+                    <li><?= $_SESSION['user']['id']?>
                     </li>
                 </ul>
             </li>
@@ -58,8 +55,17 @@
             <li>
                <img src="/web/public/image/header/giohang.png" alt="Giỏ hàng">
             </li>
-            <li>
-               <img src="/web/public/image/header/ttcanha.jpg" alt="Giỏ hàng">
+            <li class="header3_sup_dropdown3">
+               <img src="/web/public/image/header/ttcanha.jpg" alt="Thông tin cá nhân">
+               <ul class="header3_sub_dropdown3">
+                
+                    <a href="<?= _WEB_ROOT ?>/user/index"><li>Thông tin cá nhân</li></a>
+              
+                    <a href="<?= _WEB_ROOT ?>/user/logout"><li>Đăng xuất</li></a>
+              
+                    <a href="<?= _WEB_ROOT ?>/user/changePassword"><li>Đổi mật khẩu</li></a>
+             
+                </ul>
             </li>
 
         </ul>

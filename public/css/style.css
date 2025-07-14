@@ -79,12 +79,13 @@ header .header3 li img {
 
 /* === DROPDOWN MENU === */
 header .top_dow1,
-header .top_dow3 {
+header .top_dow3,
+.header3_sup_dropdown3 {
     position: relative;
 }
 
 header .top_dow2,
-header .top_dow4 {
+header .top_dow4{
     display: none;
     position: absolute;
     top: 100%;
@@ -97,9 +98,47 @@ header .top_dow4 {
     z-index: 9999; /* Nổi trên tất cả */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+.header3_sub_dropdown3 {
+    display: none;
+    position: absolute;
+  
+    right:0;
+    /* width: 200px; */
+    background-color: aliceblue;
+    list-style: none;
+    padding: 10px;
+    /* margin: 0; */
+    z-index: 9999; /* Nổi trên tất cả */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.header3_sub_dropdown3 a{
+        
+    text-decoration: none;
+      /* padding: 10px; */
+      /* width: 100%;
+       height:100%; */
+    color: black;
+}
+.header3_sub_dropdown3 li{
+    /* text-decoration: none; */
+      /* padding: 10px; */
+      /* width: 100% */
+      display: flex;
+       /* justify-content: center; */
+        align-items: center;
+
+
+          width: 200px;
+      height:30px;
+    color: black;
+}
+.header3_sub_dropdown3 li:hover {
+    background-color: rgb(162, 173, 179);
+}
 
 header .top_dow1:hover .top_dow2,
-header .top_dow3:hover .top_dow4 {
+header .top_dow3:hover .top_dow4,
+.header3_sup_dropdown3:hover .header3_sub_dropdown3 {
     display: block;
 }
 
