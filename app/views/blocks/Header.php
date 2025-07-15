@@ -61,7 +61,7 @@
                 
                     <a href="<?= _WEB_ROOT ?>/user/index"><li>Thông tin cá nhân</li></a>
               
-                    <a href="<?= _WEB_ROOT ?>/user/logout"><li>Đăng xuất</li></a>
+                    <a href="<?= _WEB_ROOT ?>/user/dangxuat"><li>Đăng xuất</li></a>
               
                     <a href="<?= _WEB_ROOT ?>/user/changePassword"><li>Đổi mật khẩu</li></a>
              
