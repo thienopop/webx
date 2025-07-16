@@ -52,14 +52,16 @@
             <li>
                <img src="/web/public/image/header/thongbao.jpg" alt="thông báo">
             </li>
+            <a href="<?= _WEB_ROOT ?>/cart/index/<?= $_SESSION['user']['id'] ?>">
             <li>
                <img src="/web/public/image/header/giohang.png" alt="Giỏ hàng">
             </li>
+            </a>
             <li class="header3_sup_dropdown3">
                <img src="/web/public/image/header/ttcanha.jpg" alt="Thông tin cá nhân">
                <ul class="header3_sub_dropdown3">
                 
-                    <a href="<?= _WEB_ROOT ?>/user/index"><li>Thông tin cá nhân</li></a>
+                    <a href="<?= _WEB_ROOT ?>/user/index/<?= $_SESSION['user']['id'] ?>"><li>Thông tin cá nhân</li></a>
               
                     <a href="<?= _WEB_ROOT ?>/user/dangxuat"><li>Đăng xuất</li></a>
               

@@ -22,4 +22,6 @@ class UsersModel extends Model {
         $this->conn->close();
         return $user;
     }
+
+    
 }

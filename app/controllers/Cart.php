@@ -1,5 +1,5 @@
 <?php
-class user extends Controller {
+class cart extends Controller {
 
     // public function __construct() {
     //     parent::__construct();
@@ -7,15 +7,15 @@ class user extends Controller {
     // }
 
     public function index($id) {
-          $productModel = $this->Model('UsersModel');
+          $productModel = $this->Model('CartsModel');
 
         // Lấy dữ liệu
 
         // Gán các thông tin khác cho view
-        $data['title'] = 'User Information';
-        $data['content'] = 'users/index';
+        $data['title'] = 'Cart Information';
+        $data['content'] = 'products/cart';
       
-        $data['view_data'] = $productModel->getInfo($id);
+        $data['view_data'] = $productModel->get_carts($id);
       
 
           $this->view('layouts/client_layout', $data);

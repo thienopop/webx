@@ -252,3 +252,60 @@ header .header3 li:hover {
 .main_chitiet_thongtin_chitiet input {
     font-size: 30px;
 }
+
+
+
+
+/* <3người dùng> */
+.main_userinfo{
+    width: 100%;
+    background-color: rgb(245, 242, 242);
+    padding: 20px;
+    box-sizing: border-box;
+}
+/* </3người dùng> */
+
+
+/* <4 giỏ hàng>\ */
+ .main_giohang_anh_mota {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .main_giohang table {
+      border-collapse: collapse;
+    }
+
+    .main_giohang table, .main_giohang th, .main_giohang td {
+      border: 1px solid black;
+      font-size: 20px;
+    }
+
+    .main_giohang th, .main_giohang td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    .main_giohang input {
+      font-size: 20px;
+    }
+
+    .main_giohang_div_thanhtoan {
+      width: 100%;
+      font-size: 40px;
+      display: flex;
+      justify-content: center;
+      background-color: rgb(246, 115, 92);
+      align-items: center;
+      position: fixed;
+      bottom: 10px;
+      padding: 10px 0;
+    }
+
+    .main_giohang_div_thanhtoan input {
+      height: 40px;
+      margin-left: 50px;
+      font-size: 20px;
+    }
+/* </4 giỏ hàng> */
