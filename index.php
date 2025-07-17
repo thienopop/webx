@@ -3,7 +3,7 @@
 session_start();
 
 $_SESSION['user'] = [
-    'id' => 1,
+    'id' => 3,
     'name' => 'Nguyễn Văn A',
     'email' => 'a@gmail.com'
 ];
