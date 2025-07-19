@@ -1,4 +1,5 @@
-<?php
+ <?php
+// require_once 'connectdb.php';
 function connect() {
     $host = "localhost";
     $username = "thien";
@@ -11,6 +12,8 @@ function connect() {
     }
     return $conn;
 }
+
+
 
 if (isset($_GET['id'])) {
     $id = intval($_GET['id']); // ép kiểu để tránh injection

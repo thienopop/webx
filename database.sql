@@ -59,6 +59,9 @@ create table reviews (
     comment text,
     created_at timestamp default current_timestamp
 );
+
+
+
 create table addresses (
     id serial primary key,
     user_id integer references users(id) on delete cascade,
@@ -69,6 +72,56 @@ create table addresses (
     country varchar(100) not null,
     created_at timestamp default current_timestamp
 );
+
+
+-- CREATE TABLE shipments (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     order_id INT NOT NULL,
+--     shipment_date DATE,
+--     carrier VARCHAR(100),
+--     tracking_number VARCHAR(100),
+--     status VARCHAR(50), -- Ví dụ: 'pending', 'shipped', 'delivered', 'cancelled'
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+--     FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+-- );
+create table orders (
+    id serial primary key,
+    user_id integer references users(id) on delete cascade,
+    order_date timestamp default current_timestamp,
+    status varchar(50) not null,
+    total_amount decimal(10, 2) not null
+);
+CREATE TABLE shipments (
+    id serial primary key,
+    order_id INT NOT NULL, -- đơn hàng liên quan
+
+    recipient_name VARCHAR(100) NOT NULL,  -- tên người nhận
+    phone_number VARCHAR(20) NOT NULL,     -- số điện thoại người nhận
+
+    address_line1 VARCHAR(255) NOT NULL,   -- số nhà, tên đường
+    address_line2 VARCHAR(255),            -- thêm (phường, toà nhà...)
+    country VARCHAR(100) DEFAULT 'Việt Nam',
+
+    shipment_date DATE,                    -- ngày gửi hàng
+    estimated_delivery DATE,               -- ngày dự kiến giao
+    delivery_date DATE,                    -- ngày giao thực tế
+
+    carrier VARCHAR(100),                  -- đơn vị vận chuyển
+    tracking_number VARCHAR(100),          -- mã theo dõi
+    status VARCHAR(50) DEFAULT 'pending',  -- trạng thái giao hàng
+
+    notes TEXT,                            -- ghi chú thêm
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+);
+
+
+
+
 create table payments (
     id serial primary key,
     order_id integer references oreders(id) on delete cascade,

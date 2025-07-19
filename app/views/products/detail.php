@@ -13,9 +13,12 @@
             <input style="width:80px" type="number" readonly id="main_chitiet_soluong_sanpham_ctsp"  value="1" min="1">
             <input style="width:40px" id="main_chitiet_tang_soluong_ctsp" type="button" value="+">
            <br>
+           <i class="main_chitiet_note" style="font-size: 20px; "></i>
            <br>
-           <input type="button" data-id="<?= $data['id'] ?>" value="Thêm vào giỏ hàng">
-           <input style="background-color: rgb(254, 51, 51); " data-id="<?= $data['id'] ?>"type="button" value="Mua">
+           <input type="button" id="main_chitiet_id_sanpham" data-id="<?= $data['id'] ?>" value="Thêm vào giỏ hàng">
+           <input  style="background-color: rgb(254, 51, 51); " data-id="<?= $data['id'] ?>"type="button" value="Mua">
+
+
            </form>
         </div>
     </div>
@@ -46,4 +49,23 @@ giam_soluong.addEventListener("click", function() {
     sl_hienthi.value = parseInt(sl_hienthi.value) -1;
     capnhatthanhtien();
   });
+
+
+function themvao_giohang() {
+    let num = document.getElementById('main_chitiet_soluong_sanpham_ctsp').value;
+    
+    // Sửa chỗ này
+    let id = document.getElementById('main_chitiet_id_sanpham').getAttribute('data-id');
+
+    fetch('<?= _WEB_ROOT ?>/app/controllers/ajax/add_cart.php?product_id=' + id + '&sl=' + num)
+        .then(response => response.text())
+        .then(data => {
+           
+            document.querySelector('.main_chitiet_note').textContent = data;
+
+        });
+}
+document.getElementById('main_chitiet_id_sanpham').addEventListener('click', themvao_giohang);
+
+
      </script>
